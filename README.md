@@ -1,4 +1,4 @@
-# Vedio-Classification-
+# Video-Classification-
 Create a folder for each unique duration and move the corresponding videos to the folder
 
 This Python code iterates over a directory of video files and groups them based on their duration. It then creates a folder for each unique duration and moves the corresponding videos to the folder. 
