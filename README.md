@@ -1,10 +1,49 @@
-# Video-Classification-
-Create a folder for each unique duration and move the corresponding videos to the folder
+# Video Organization Script
 
-This Python code iterates over a directory of video files and groups them based on their duration. It then creates a folder for each unique duration and moves the corresponding videos to the folder. 
+This Python script organizes a collection of videos by their duration. It iterates through a specified directory containing video files, calculates the duration of each video, and then creates folders based on the duration. Each folder is named after the duration (in seconds), and the corresponding videos are moved to their respective folders.
 
-The code uses the `os` module to list all files in the specified directory and filter out files that do not end with the `.mp4` extension. It then loads each video file using OpenCV's `cv2.VideoCapture()` method and extracts its duration using the video capture object's `get()` method. The duration is computed as the total number of frames in the video divided by the frames per second. 
+## Dependencies
 
-Next, the video file path is added to a dictionary that maps each duration to a list of video paths with that duration. If a duration is not already in the dictionary, a new empty list is created for it. 
+- `cv2`: OpenCV library for computer vision and video processing.
+- `os`: Module for interacting with the operating system, including file and directory operations.
+- `shutil`: Module for high-level file operations.
 
-Finally, the code loops over the dictionary items and creates a folder for each unique duration using the `os.makedirs()` method. It then moves the corresponding videos to their respective folders using the `shutil.move()` method. The `exist_ok=True` parameter is used to avoid raising an error if the folder already exist.
+## Code Overview
+
+1. **Video Directory:**
+   - Define the path to the directory containing the videos (`video_directory`).
+
+2. **Duration Tracking:**
+   - Create a dictionary (`videos_by_duration`) to keep track of videos based on their duration.
+
+3. **Video Iteration:**
+   - Iterate over the videos in the specified directory.
+   - For each video, load it and extract its duration (in seconds).
+
+4. **Dictionary Population:**
+   - Add the video file to the dictionary, organized by its duration.
+   - If the duration is not already a key in the dictionary, create a new list for that duration.
+
+5. **Folder Creation and Video Movement:**
+   - Create a folder for each unique duration (named as '{duration}s').
+   - Move the corresponding videos to the newly created folders.
+
+6. **Execution:**
+   - Replace 'video directory' with the path to the actual directory containing the video files.
+   - Execute the script to organize the videos into folders based on their durations.
+
+## Example
+Suppose the script is run on a directory containing the following videos:
+- `video1.mp4` (duration: 60 seconds)
+- `video2.mp4` (duration: 120 seconds)
+- `video3.mp4` (duration: 60 seconds)
+
+After execution, the directory structure will look like this:
+|-- 10s
+| |-- video1.mp4
+| |-- video3.mp4
+|-- 20s
+| |-- video2.mp4
+
+
+This organization helps in categorizing and managing videos based on their durations.
